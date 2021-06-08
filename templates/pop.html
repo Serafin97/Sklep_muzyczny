@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block style %}
+    .con {
+    height: 200px;
+    position: relative;
+    }
+
+    .cen {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+{% endblock %}
+
+
+
+{% block header %}<h2>Gatunek Pop:</h2>{% endblock %}
+
+{% block content %}
+    {% for product in cd %}
+        <div style="border:1px solid black; height:150px; margin-left: 1px; margin-right: 5px;">
+            <div style="border: 1px solid black; width: 140px;height: 140px; float: left; margin: 5px">
+                <form method="POST" enctype="multipart/form-data">
+                    {% load static %}
+                    <img style="max-height:140px;max-width:140px; display: block; margin: auto;"
+                         src={{ MEDIA_URL }}/{{ photo }} alt=""></a>
+                </form>
+            </div>
+
+            <div style="border:1px solid black; height:65%; margin-left: 5px; margin-right: 5px; margin-top: 2px; float: left; width: 70%">
+                <h4>{{ product.nazwa_produktu }}</h4>
+                <p>{{ produkt.gatunek }}</p>
+            </div>
+
+            <div style="height:35%; float: left; width: 70%; margin-left: 5px; margin-right: 5px; ">
+                <div style="float: left;width: 50%; height: 100%; position: relative;">
+                    <div class="cen">
+                        {{ product.cena }}zł
+                    </div>
+                </div>
+
+                <div style="float: left; width: 50%; height: 100%; position: relative;">
+                    <div class="cen">
+                        <button>
+                            dodaj do koszyka
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

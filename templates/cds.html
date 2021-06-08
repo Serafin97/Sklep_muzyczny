@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+
+{% block category %}Gatunki:{% endblock %}
+{% block spis %}
+    <li><a href=>Muzyka klasyczna</a></li>
+    <li><a href=>Pop</a></li>
+    <li><a href=>Rock</a></li>
+    <li><a href=>Rap</a></li>
+    <li><a href=>Jazz</a></li>
+{% endblock %}
+
+
+{% block header %}<h2>Wszystkie płyty:</h2>{% endblock %}
+
+{% block content %}
+    {% for product in cd %}
+        {% if product.dostepnosc == 'dostępny' %}
+
+
+            <div style="border:1px solid black; height:150px; ">
+                <div style="border: 1px solid black; width: 140px;height: 140px; float: left; margin: 5px">
+                    {% load static %}
+                    <img style="max-height:140px;max-width:140px; display: block; margin: auto;" alt=""></a>
+                </div>
+                <div style="border:1px solid black; height:65%; margin-left: 5px; margin-right: 5px; float: left; width: 70%">
+                    <h4>{{ product.nazwa_produktu }}</h4>
+                    <p>Gatunek:{{ product.gatunek }} </p>
+                </div>
+                <div style="height:35%; float: left; width: 70%; margin-left: 5px; margin-right: 5px; ">
+                    <div style="float: left;width: 50%; height: 100%; position: relative;">
+                        <div class="cen">
+                            {{ product.cena }}zł
+                        </div>
+                    </div>
+
+                    <div style="float: left; width: 50%; height: 100%; position: relative;">
+                        <div class="cen">
+                            <button>
+                                dodaj do koszyka
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <!--<div style="border:1px solid black; height:150px; ">
+        <div style="border: 1px solid black; width: 140px;height: 140px; float: left; margin: 5px">
+            {% load static %}
+	       <img style="max-height:140px;max-width:140px; display: block; margin: auto;" src={% static 'onex.jpg' %} alt=""></a>
+        </div>
+        <div style="border:1px solid black; height:65%; margin-left: 5px; margin-right: 5px; float: left; width: 70%">
+                <h4>Three Days Grace - One-X  </h4>
+                <p>Gatunek: Rock</p>
+        </div>
+        <div style="height:35%; float: left; width: 70%; margin-left: 5px; margin-right: 5px; ">
+            <div style="float: left;width: 50%; height: 100%; position: relative;">
+                <div class="cen">
+                40.00 zł
+                </div>
+            </div>
+
+            <div style="float: left; width: 50%; height: 100%; position: relative;">
+                <div class="cen">
+                    <button>
+                        dodaj do koszyka
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="border:1px solid black; height:150px; ">
+        <div style="border: 1px solid black; width: 140px;height: 140px; float: left; margin: 5px">
+            {% load static %}
+	       <img style="max-height:140px;max-width:140px; display: block; margin: auto;" src={% static 'strachy.jpg' %} alt=""></a>
+        </div>
+        <div style="border:1px solid black; height:65%; margin-left: 5px; margin-right: 5px; float: left; width: 70%">
+                <h4>Strachy Na Lachy - Piła Tango</h4>
+                <p>Gatunek: Rock</p>
+        </div>
+        <div style="height:35%; float: left; width: 70%; margin-left: 5px; margin-right: 5px; ">
+            <div style="float: left;width: 50%; height: 100%; position: relative;">
+                <div class="cen">
+                35.00 zł
+                </div>
+            </div>
+
+            <div style="float: left; width: 50%; height: 100%; position: relative;">
+                <div class="cen">
+                    <button>
+                        dodaj do koszyka
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+
+{% endblock %}

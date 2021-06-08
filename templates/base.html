@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        {% block style %}{% endblock %}
+
+        #logo {
+            border: 1px solid black;
+            height: 100px;
+            background-color: #ffe6b3;
+        }
+
+        .block {
+
+            border: 1px solid #BDBDBD;
+            background: #E2E2E2;
+            padding: 1px 1px 14px 1px;
+            margin-bottom: 4px;
+        }
+
+        #spis {
+
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #spis li { /* do homa chyba do listy */
+            list-style-type: none;
+            line-height: 17px;
+            padding: 0 0 0 2px;
+            background: #BDBDBD;
+            margin-bottom: 2px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            height: 36px;
+            margin-bottom: 5px;
+        }
+
+        .topnav input[type=text] {
+            float: right;
+            padding: 2px;
+            border: none;
+            margin-top: 8px;
+            margin-left: 2px;
+            font-size: 13px;
+            background-color: #e9e9e9;
+        }
+
+        .chart {
+            overflow: hidden;
+            border-style: solid;
+            text-align: center;
+            border: 3px solid #f1f1f1;
+            margin-bottom: 5px;
+
+        }
+
+        .chart h3:hover {
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .login_button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            margin: 5px;
+            padding: 16px;
+        }
+
+        div.psw {
+            text-align: center;
+            margin: 5px;
+        }
+
+    </style>
+
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}Sklep muzyczny{% endblock %}</title>
+
+</head>
+
+<body>
+<div style="border:1px solid black;max-width:1000px;margin:0 auto;">
+    {% block logo %}
+        <div id="logo"><h1 style="color:red;text-align:center; ">SKLEP MUZYCZNY</h1></div>{% endblock %}
+
+    <div style="padding-top:4px;width:20%;float:left;">
+        <div class="block">
+            <h3 style="text-align:center;">{% block category %}Gatunki:{% endblock %}</h3>
+            <ul id="spis">
+                <li><a href=>Jazz</a></li>
+                <li><a href=>Muzyka klasyczna</a></li>
+                <li><a href="/pop">Pop</a></li>
+                <li><a href=>Rap</a></li>
+                <li><a href="/rock">Rock</a></li>
+                <li><a href=>Wszystkie płyty</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="width:60%;float:left;">{% block header %}{% endblock %}
+        {% block content %}Content{% endblock %}</div>
+
+    <div style="width:20%;float:left;">
+        <div class="topnav">
+            <input type="text" placeholder="Szukaj..">
+        </div>
+        <div class="chart">
+            <h3>Mój koszyk</h3>
+        </div>
+        {% block loginPanel %}
+            <div>
+                <form action="login" method='post'>
+
+                    {% csrf_token %}
+                    <div class="container">
+                        <label for="uname"><b>Login</b></label>
+                        <input type="text" placeholder="Wpisz login" name="uname" required>
+
+                        <label for="psw"><b>Hasło</b></label>
+                        <input type="password" placeholder="Wpisz hasło" name="psw" required>
+                        <button class="login_button" type="submit">Zaloguj</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Zapamiętaj mnie
+                        </label>
+                        <div class="psw">
+                            <a href="#">Zapomniałeś hasła?</a>
+                            <a href="register">Utwórz konto</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        {% endblock %}
+    </div>
+
+</div>
+</body>
+</html>
